@@ -17,7 +17,7 @@
         <div class="d-flex justify-content-end">
             <button class="btn btn-success mb-3 me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasForm"
                 aria-controls="offcanvasForm">Veri Ekle</button>
-            <button class="btn btn-primary mb-3">Veriyi Dışa Aktar</button>
+            <a href="{{ route('data.export') }}" class="btn btn-primary mb-3">Veriyi Dışa Aktar</a>
         </div>
 
         <table class="table table-striped table-bordered mt-3">

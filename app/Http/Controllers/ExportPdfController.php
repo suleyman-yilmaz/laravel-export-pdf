@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ExportPdf;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ExportPdfController extends Controller
 {
@@ -43,5 +44,20 @@ class ExportPdfController extends Controller
         $data->delete();
 
         return back()->with('success', 'Succesfully delete data!');
+    }
+
+    /*
+    * Export PDF
+    */
+    public function exportPdf()
+    {
+        $data = ExportPdf::all();
+
+        $pdf = Pdf::loadView('pdf.data', compact('data'))->setPaper('a4')
+            ->setOption([
+                'tempDir' => public_path(),
+                'chroot' => public_path(),
+            ]);
+        return $pdf->download('data.pdf');
     }
 }

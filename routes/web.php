@@ -6,3 +6,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ExportPdfController::class, 'index'])->name('data.index');
 Route::post('/store', [ExportPdfController::class, 'store'])->name('data.store');
 Route::delete('/destroy/{id}', [ExportPdfController::class, 'destroy'])->name('data.destroy');
+Route::get('download/pdf', [ExportPdfController::class, 'exportPdf'])->name('data.export');
